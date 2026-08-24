@@ -1,0 +1,14 @@
+{
+  "name": "2026 沖繩親子旅行手冊",
+  "short_name": "沖繩旅行",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e7c86",
+  "theme_color": "#0e7c86",
+  "lang": "zh-Hant",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

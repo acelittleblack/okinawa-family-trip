@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e7c86">
+<meta name="robots" content="noindex">
+<title>2026 沖繩親子旅行手冊</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230e7c86'/%3E%3Ctext y='72' x='50' font-size='60' text-anchor='middle'%3E%F0%9F%8F%96%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1c2b2b; --sub:#5a6d6d; --paper:#fbf8f1; --card:#ffffff;
+  --line:#e3ddd0; --sea:#0e7c86; --sea-d:#0a5d64; --coral:#e26d5a;
+  --sun:#f2b134; --leaf:#5c9a5c; --sky:#3d7ea6; --grape:#8a6bb0;
+  --shadow:0 2px 10px rgba(28,43,43,.08); --shadow-l:0 6px 22px rgba(28,43,43,.12);
+  --r:16px;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --ink:#eef2f0; --sub:#9db0ad; --paper:#12191a; --card:#1a2426;
+    --line:#2b393b; --sea:#3fb6c1; --sea-d:#2a9aa5; --coral:#f0836f;
+    --shadow:0 2px 10px rgba(0,0,0,.35); --shadow-l:0 8px 26px rgba(0,0,0,.45);}
+}
+:root[data-theme="dark"]{ --ink:#eef2f0; --sub:#9db0ad; --paper:#12191a; --card:#1a2426;
+  --line:#2b393b; --sea:#3fb6c1; --sea-d:#2a9aa5; --coral:#f0836f;
+  --shadow:0 2px 10px rgba(0,0,0,.35); --shadow-l:0 8px 26px rgba(0,0,0,.45);}
+:root[data-theme="light"]{ --ink:#1c2b2b; --sub:#5a6d6d; --paper:#fbf8f1; --card:#ffffff;
+  --line:#e3ddd0; --sea:#0e7c86; --sea-d:#0a5d64; --coral:#e26d5a;
+  --shadow:0 2px 10px rgba(28,43,43,.08); --shadow-l:0 6px 22px rgba(28,43,43,.12);}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom)}
+a{color:var(--sea);text-decoration:none}
+
+/* ---------- Header ---------- */
+header.top{position:sticky;top:0;z-index:50;
+  background:linear-gradient(120deg,var(--sea),var(--sea-d));
+  color:#fff;padding:14px 16px calc(10px + env(safe-area-inset-top)) 16px;
+  padding-top:calc(14px + env(safe-area-inset-top));box-shadow:var(--shadow-l)}
+.top .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-weight:800;font-size:1.15rem;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+.brand small{display:block;font-weight:500;font-size:.72rem;opacity:.85;letter-spacing:1px}
+.theme-btn{background:rgba(255,255,255,.18);border:0;color:#fff;font-size:1.1rem;
+  width:38px;height:38px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.theme-btn:active{transform:scale(.92)}
+
+/* countdown */
+.countdown{display:flex;gap:8px;margin-top:12px}
+.cd{flex:1;background:rgba(255,255,255,.14);border-radius:12px;padding:8px 4px;text-align:center}
+.cd b{display:block;font-size:1.3rem;font-weight:800;line-height:1.1}
+.cd span{font-size:.66rem;opacity:.85;letter-spacing:1px}
+.cd-done{margin-top:12px;background:rgba(255,255,255,.14);border-radius:12px;padding:10px;text-align:center;font-weight:700}
+
+/* tabs */
+.tabs{position:sticky;top:0;z-index:40;background:var(--paper);
+  display:flex;overflow-x:auto;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);
+  scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--sub);
+  padding:8px 15px;border-radius:999px;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap}
+.tab.active{background:var(--sea);color:#fff;border-color:var(--sea)}
+
+main{max-width:760px;margin:0 auto;padding:16px 14px 60px}
+.view[hidden]{display:none}
+h2.sec{font-size:1.05rem;margin:22px 2px 12px;display:flex;align-items:center;gap:8px}
+h2.sec::before{content:"";width:5px;height:20px;border-radius:3px;background:var(--coral)}
+
+/* ---------- Itinerary mode toggle ---------- */
+.modebar{display:inline-flex;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:4px;gap:4px;margin-bottom:12px}
+.mode{border:0;background:none;color:var(--sub);font-weight:700;font-size:.88rem;
+  padding:7px 16px;border-radius:9px;cursor:pointer}
+.mode.active{background:var(--sea);color:#fff}
+
+/* ---------- Route map ---------- */
+.routecard{margin-bottom:16px}
+.routecard>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
+  align-items:center;font-weight:800;font-size:1.02rem}
+.routecard>summary::-webkit-details-marker{display:none}
+.rhint{font-size:.7rem;font-weight:700;color:var(--sea);background:var(--paper);
+  border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.rmap{position:relative;padding-left:34px;margin-top:16px}
+.rmap::before{content:"";position:absolute;left:15px;top:6px;bottom:8px;width:2px;background:var(--line)}
+.rstop{position:relative;margin-bottom:2px}
+.rstop::before{content:"";position:absolute;left:-26px;top:3px;width:14px;height:14px;border-radius:50%;
+  background:var(--sea);border:3px solid var(--card);box-shadow:0 0 0 2px var(--sea)}
+.rstop.air::before{background:var(--sun);box-shadow:0 0 0 2px var(--sun)}
+.rname{font-weight:700}
+.rbadge{font-size:.64rem;font-weight:800;color:#fff;background:var(--sea-d);
+  padding:2px 8px;border-radius:6px;margin-left:7px;vertical-align:middle}
+.rstop.air .rbadge{background:#8a6410}
+.rsub{font-size:.78rem;color:var(--sub);margin:1px 0 0}
+.rleg{margin:5px 0 9px;font-size:.76rem}
+.rleg span{color:var(--sub);background:var(--paper);border:1px dashed var(--line);
+  border-radius:8px;padding:3px 10px;display:inline-flex;gap:6px;align-items:center}
+.rbranch{margin:5px 0 10px;font-size:.79rem;line-height:1.5;background:var(--c-play,#dcefe0);
+  color:#2f6b39;border-radius:10px;padding:8px 11px}
+@media (prefers-color-scheme:dark){.rbranch{filter:brightness(.92)}}
+
+/* ---------- Day sub-tabs ---------- */
+.days{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day-btn{flex:0 0 auto;min-width:66px;border:1px solid var(--line);background:var(--card);
+  border-radius:12px;padding:8px 10px;cursor:pointer;text-align:center;color:var(--ink)}
+.day-btn b{display:block;font-size:.95rem}
+.day-btn span{font-size:.68rem;color:var(--sub)}
+.day-btn.active{background:var(--sea);border-color:var(--sea);color:#fff}
+.day-btn.active span{color:rgba(255,255,255,.85)}
+
+.day-head{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px 16px;box-shadow:var(--shadow);margin-bottom:14px}
+.day-head h3{margin:0 0 4px;font-size:1.15rem}
+.day-head .meta{font-size:.82rem;color:var(--sub);display:flex;flex-wrap:wrap;gap:6px 14px}
+.day-head .meta b{color:var(--sea)}
+
+/* timeline */
+.tl{position:relative;margin-left:6px;padding-left:22px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.ev{position:relative;margin-bottom:12px}
+.ev::before{content:"";position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;
+  background:var(--sea);border:3px solid var(--paper);box-shadow:0 0 0 1px var(--sea)}
+.ev.flight::before{background:var(--sun);box-shadow:0 0 0 1px var(--sun)}
+.ev.food::before{background:var(--coral);box-shadow:0 0 0 1px var(--coral)}
+.ev.stay::before{background:var(--grape);box-shadow:0 0 0 1px var(--grape)}
+.ev-card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:11px 13px;box-shadow:var(--shadow)}
+.ev-time{font-size:.78rem;font-weight:800;color:var(--sea);font-variant-numeric:tabular-nums}
+.ev-title{font-weight:700;margin:1px 0 2px}
+.ev-note{font-size:.82rem;color:var(--sub)}
+.chip{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-right:5px;vertical-align:middle}
+.c-flight{background:#fdeecb;color:#8a6410}
+.c-food{background:#fbe0da;color:#a03d2b}
+.c-stay{background:#e9e0f4;color:#5f4585}
+.c-play{background:#dcefe0;color:#2f6b39}
+@media (prefers-color-scheme:dark){.c-flight,.c-food,.c-stay,.c-play{filter:brightness(.9)}}
+.mapbtn{display:inline-flex;align-items:center;gap:4px;margin-top:7px;font-size:.76rem;font-weight:700;
+  background:var(--sea);color:#fff;padding:4px 10px;border-radius:8px}
+
+/* generic cards (food / play / hotel) */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px;box-shadow:var(--shadow);margin-bottom:12px}
+.card h3{margin:0;font-size:1.02rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card .addr{font-size:.82rem;color:var(--sub);margin:6px 0}
+.card .kv{font-size:.82rem;margin:3px 0}
+.card .kv b{color:var(--sea);font-weight:700}
+.badge{font-size:.68rem;font-weight:800;padding:2px 9px;border-radius:999px}
+.b-must{background:var(--coral);color:#fff}
+.b-maybe{background:var(--line);color:var(--sub)}
+.b-book{background:var(--sun);color:#5a3f00}
+.card .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.card .links a{font-size:.78rem;font-weight:700;border:1px solid var(--sea);color:var(--sea);
+  padding:5px 11px;border-radius:9px}
+.card .links a.solid{background:var(--sea);color:#fff}
+
+/* flight */
+.flight{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.flight .leg{flex:1;min-width:130px}
+.flight .arrow{color:var(--sea);font-size:1.3rem}
+.flight .no{font-size:.72rem;color:var(--sub);font-weight:700}
+.flight .t{font-size:1.05rem;font-weight:800}
+.flight .p{font-size:.8rem;color:var(--sub)}
+
+/* checklist */
+.progress{position:sticky;top:52px;z-index:30;background:var(--paper);padding:8px 0 10px}
+.bar{height:12px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--sea),var(--leaf));width:0;transition:width .3s}
+.progress .lbl{font-size:.8rem;color:var(--sub);margin-bottom:5px;display:flex;justify-content:space-between}
+.progress .lbl b{color:var(--sea)}
+.chk-grp{margin-bottom:8px}
+.chk-grp>summary{cursor:pointer;font-weight:800;padding:11px 14px;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.chk-grp>summary::-webkit-details-marker{display:none}
+.chk-grp>summary .cnt{font-size:.76rem;color:var(--sub);font-weight:700}
+.chk-grp[open]>summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.chk-list{border:1px solid var(--line);border-top:0;border-radius:0 0 12px 12px;overflow:hidden}
+.chk{display:flex;align-items:center;gap:11px;padding:10px 14px;background:var(--card);border-top:1px solid var(--line);cursor:pointer}
+.chk:first-child{border-top:0}
+.chk input{width:20px;height:20px;accent-color:var(--sea);flex:0 0 auto}
+.chk span{font-size:.92rem}
+.chk.done span{text-decoration:line-through;color:var(--sub)}
+.reset{margin-top:10px;background:none;border:1px solid var(--line);color:var(--sub);
+  padding:8px 14px;border-radius:9px;font-size:.8rem;cursor:pointer}
+
+.note{background:var(--card);border:1px dashed var(--sea);border-radius:12px;padding:12px 14px;font-size:.85rem;color:var(--sub);margin-bottom:14px}
+.note b{color:var(--coral)}
+footer{text-align:center;color:var(--sub);font-size:.72rem;padding:24px 0 10px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="row">
+    <div class="brand">🏖️ 沖繩親子旅行 <small>2026 / 09 / 13 – 09 / 17 · 星宇航空 · 自駕</small></div>
+    <div style="display:flex;gap:8px">
+      <button class="theme-btn" id="expandBtn" title="展開/收合全部" style="width:auto;padding:0 12px;font-size:.8rem;font-weight:700">展開全部</button>
+      <button class="theme-btn" id="themeBtn" title="切換深色">🌙</button>
+    </div>
+  </div>
+  <div class="countdown" id="cd"></div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab active" data-v="itinerary">🗓️ 行程</button>
+  <button class="tab" data-v="food">🍽️ 美食</button>
+  <button class="tab" data-v="play">🎡 玩樂</button>
+  <button class="tab" data-v="stay">🏨 住宿・航班</button>
+  <button class="tab" data-v="weather">🌤️ 天氣</button>
+  <button class="tab" data-v="med">🏥 醫療</button>
+  <button class="tab" data-v="check">✅ 待辦</button>
+</nav>
+
+<main>
+  <!-- ITINERARY -->
+  <section class="view" data-v="itinerary">
+    <details class="card routecard" open>
+      <summary><span>🗺️ 移動路線（全程自駕）</span><span class="rhint">主要車程一覽</span></summary>
+      <div class="rmap">
+        <div class="rstop air"><span class="rname">✈️ 那霸機場</span><span class="rbadge">D1 抵達</span></div>
+        <div class="rleg"><span>🚗 約 20 分</span></div>
+        <div class="rstop"><span class="rname">那霸・國際通</span><span class="rbadge">D1 住</span>
+          <div class="rsub">嘉新酒店 HOTEL COLLECTIVE</div></div>
+        <div class="rleg"><span>🚗 約 30 分 · 順路 Parco City → 港川 Birthday</span></div>
+        <div class="rstop"><span class="rname">北谷・美國村</span><span class="rbadge">D2–D3 住</span>
+          <div class="rsub">沖繩北谷麗嘉皇家度假酒店</div></div>
+        <div class="rbranch">🌊 <b>D3 北部一日遊</b>（由北谷往返）<br>名護 大家（單程約 55 分）→ 美麗海水族館 → 古宇利大橋　·　<b>當日往返總車程約 3.5 小時</b></div>
+        <div class="rleg"><span>🚗 約 1 小時 · 順路 兒童王國 → 來客夢</span></div>
+        <div class="rstop"><span class="rname">那霸・國際通</span><span class="rbadge">D4 住</span>
+          <div class="rsub">Hotel Urbansea 2 松尾</div></div>
+        <div class="rleg"><span>🚗 約 20 分</span></div>
+        <div class="rstop air"><span class="rname">✈️ 那霸機場</span><span class="rbadge">D5 離境</span></div>
+      </div>
+      <div class="rsub" style="margin-top:14px;padding-left:2px">🚗 換宿＋機場接送車程合計約 1.5 小時；D3 北部往返另計約 3.5 小時。（實算一般路網，走收費高速可再快些）</div>
+    </details>
+    <div class="modebar">
+      <button class="mode active" data-m="single">只看單日</button>
+      <button class="mode" data-m="all">全部行程</button>
+    </div>
+    <div class="days" id="dayTabs"></div>
+    <div id="dayPanel"></div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="view" data-v="food" hidden>
+    <div class="note">⚠️ <b>燒肉王</b> 與 <b>百年古家「大家」</b> 都需要事先預約，記得先訂位！</div>
+    <div id="foodList"></div>
+  </section>
+
+  <!-- PLAY -->
+  <section class="view" data-v="play" hidden>
+    <div id="playList"></div>
+  </section>
+
+  <!-- STAY + FLIGHT -->
+  <section class="view" data-v="stay" hidden>
+    <h2 class="sec">航班資訊</h2>
+    <div id="flightBox"></div>
+    <h2 class="sec">住宿</h2>
+    <div id="hotelList"></div>
+    <h2 class="sec">租車</h2>
+    <div class="card">
+      <h3>🚗 Oki Blues Car Rental 沖繩中文租車</h3>
+      <div class="addr">📍 那霸市山下町 3-16 OAS 航空大樓 4F（近那霸機場）</div>
+      <div class="kv"><b>營業</b>：08:00–18:00</div>
+      <div class="kv"><b>接駁</b>：取／還車當天，那霸機場免費接駁（P3 停車場 5F 北棟集合）</div>
+      <div class="kv"><b>聯絡</b>：LINE ＠sunokiblues／WhatsApp +81 70-4095-1403</div>
+      <div class="links">
+        <a class="solid" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Oki%20Blues%20Car%20Rental%20%E9%82%A3%E8%A6%87%20%E5%B1%B1%E4%B8%8B%E7%94%BA">📍 Google 地圖</a>
+        <a target="_blank" rel="noopener" href="https://okiblues.com/">官方網站</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEATHER -->
+  <section class="view" data-v="weather" hidden>
+    <h2 class="sec">沖繩 9 月氣候概況</h2>
+    <div class="card">
+      <div class="kv"><b>氣溫</b>：白天約 30–32°C、夜間約 26–27°C（體感悶熱潮濕）</div>
+      <div class="kv"><b>海水溫</b>：約 28–29°C，非常適合玩水 🏊</div>
+      <div class="kv"><b>降雨</b>：午後易有陣雨，帶輕便雨具</div>
+      <div class="kv"><b>紫外線</b>：極強 ☀️ 帽子、防曬、多補水（孕婦＋寶寶尤其注意）</div>
+      <div class="kv"><b>⚠️ 颱風季</b>：9 月仍是沖繩颱風高峰，出發前 3–5 天務必查颱風動態與航班</div>
+    </div>
+    <h2 class="sec">即時預報（那霸）</h2>
+    <div id="wxNote" class="note" style="border-style:solid">載入中…</div>
+    <div id="wxList" style="display:flex;gap:10px;overflow-x:auto;padding-bottom:6px"></div>
+  </section>
+
+  <!-- MEDICAL -->
+  <section class="view" data-v="med" hidden>
+    <h2 class="sec">緊急聯絡電話</h2>
+    <div id="emgList"></div>
+    <div class="note">🛂 <b>就醫小提醒</b>：日本就醫需先自費、保留<b>診斷書與收據</b>回台向健保／旅平險申請核退；隨身帶<b>母子手冊、懷孕週數、寶寶保險資料</b>。多語言醫療諮詢 <b>0570-050-235</b> 可協助找看得懂中文的院所。</div>
+    <h2 class="sec">各區就近醫院</h2>
+    <div id="hospList"></div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="view" data-v="check" hidden>
+    <div class="progress">
+      <div class="lbl"><span>打包進度</span><span><b id="pDone">0</b> / <span id="pAll">0</span></span></div>
+      <div class="bar"><i id="pBar"></i></div>
+    </div>
+    <div id="checkList"></div>
+    <button class="reset" id="resetChk">清空全部勾選</button>
+  </section>
+</main>
+
+<footer>粿粿的第一次沖繩旅行 🐠 · 資料可離線瀏覽</footer>
+
+<script>
+/* ============ DATA ============ */
+const TRIP_START = "2026-09-13T12:00:00+08:00";
+
+function g(q){ // google maps search link
+  return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+}
+
+const days = [
+ { id:"d1", label:"Day 1", date:"9/13 週日", title:"出發・抵達那霸", stay:"嘉新酒店 HOTEL COLLECTIVE",
+   events:[
+     ["12:00","台北（桃園）第一航廈 出發","JX870 星宇航空","flight"],
+     ["14:40","抵達那霸機場","","flight"],
+     ["16:00","Oki Blues 取車","那霸機場免費接駁至山下町門市","play","Oki Blues Car Rental 沖繩中文租車 那覇 山下町"],
+     ["16:30","入住 嘉新酒店 HOTEL COLLECTIVE","國際通旁","stay","嘉新酒店 HOTEL COLLECTIVE 那霸"],
+     ["","帶粿粿游泳 🏊","飯店泳池放電",""],
+     ["","逛 BIC CAMERA 國際通","","play","BIC CAMERA 那覇店"],
+     ["晚餐","國際通屋台村","小吃、串燒、生啤","food","国際通屋台村"],
+   ]},
+ { id:"d2", label:"Day 2", date:"9/14 週一", title:"那霸 → 港川 → 北谷", stay:"沖繩北谷麗嘉皇家度假酒店",
+   events:[
+     ["08:30","飯店早餐","",""],
+     ["10:00","San-A 浦添西海岸 PARCO CITY","停留約 4 小時（10:00–14:00）・車程約 10 分","play","サンエー浦添西海岸 PARCO CITY"],
+     ["14:10","Birthday 港川店","港川外人住宅甜點・車程約 5 分","food","Birthday 港川"],
+     ["15:40","入住 沖繩北谷麗嘉皇家度假酒店","車程約 16 分","stay","沖繩北谷麗嘉皇家度假酒店"],
+     ["","美國村逛街 🎡","摩天輪、海景、購物","play","美國村 北谷"],
+   ]},
+ { id:"d3", label:"Day 3", date:"9/15 週二", title:"北部一日遊", stay:"沖繩北谷麗嘉皇家度假酒店",
+   events:[
+     ["09:30","出發往名護","車程約 1 小時",""],
+     ["11:00","百年古家 大家（阿古豬）","必吃・需預約，建議白天去","food","百年古家 大家 名護"],
+     ["12:30","沖繩美麗海水族館","鯨鯊、海豚秀","play","沖縄美ら海水族館"],
+     ["","古宇利大橋 🌊","絕美跨海大橋","play","古宇利大橋"],
+     ["","回北谷麗嘉皇家","古宇利玩到傍晚再回程",""],
+     ["晚餐","迴轉壽司 市場 美浜店","北谷美浜・美國村旁，海鮮迴轉壽司","food","グルメ回転寿司 市場 美浜店 北谷"],
+   ]},
+ { id:"d4", label:"Day 4", date:"9/16 週三", title:"中部親子 → 國際通", stay:"Hotel Urbansea 2 松尾",
+   events:[
+     ["09:00","出發","",""],
+     ["09:30","沖繩兒童王國（動物園）","動物 + 遊具，每週二休","play","沖縄こどもの国"],
+     ["12:30","永旺夢樂城 沖繩來客夢","必去・停留約 4 小時（12:30–16:30）","play","イオンモール沖縄ライカム"],
+     ["17:00","MaxValu 牧志店","買和牛、水果回飯店・車程約 30 分","food","マックスバリュ 牧志店"],
+     ["17:30","入住 Hotel Urbansea 2 松尾","國際通 松尾","stay","ホテル アーバンシー2松尾"],
+   ]},
+ { id:"d5", label:"Day 5", date:"9/17 週四", title:"國際通 → 回台", stay:"—（回程）",
+   events:[
+     ["08:30","C&C Breakfast 早午餐","人氣鬆餅","food","C&C Breakfast 那覇"],
+     ["","牧志市場逛逛","第一牧志公設市場","play","第一牧志公設市場"],
+     ["","波上宮 ⛩️","那霸海邊神社","play","波上宮"],
+     ["13:00","Oki Blues 還車","山下町門市・還車後接駁回機場","play","Oki Blues Car Rental 沖繩中文租車 那覇 山下町"],
+     ["13:30","抵達那霸機場","接駁約 10 分",""],
+     ["15:50","那霸 出發回台灣","JX871 星宇航空","flight"],
+     ["16:25","抵達台北（桃園）","",""],
+   ]},
+];
+
+const food = [
+ { name:"百年古家 大家（阿古豬）", must:"must", book:true, addr:"沖繩縣名護市字中山 90",
+   kv:[["營業","午餐 11:00–15:30 / 晚餐 17:30–21:00"],["備註","需線上預約，建議白天去"]],
+   links:[["線上預約","https://www.tablecheck.com/shops/ufuya/reserve",1],["Google 地圖",g("百年古家 大家 名護"),0]] },
+ { name:"沖繩燒肉王（吃到飽）", book:true, addr:"那覇久茂地店",
+   kv:[["備註","需預約・限時 100 分鐘"],["建議","點 3180 價位"]],
+   links:[["介紹","https://mimigo.tw/yakiniku-king/",0],["Google 地圖",g("焼肉きんぐ 那覇久茂地"),0]] },
+ { name:"C&C Breakfast", addr:"那霸・國際通附近",
+   kv:[["類型","人氣早午餐・鬆餅"]], links:[["Google 地圖",g("C&C Breakfast 那覇"),0]] },
+ { name:"迴轉壽司 市場 美浜店", addr:"北谷町美浜（美國村旁）",
+   kv:[["原名","Gourmet Conveyor Belt Sushi Ichiba Mihama"],["類型","海鮮迴轉壽司"],["安排","D3 晚餐・就在北谷住宿附近"]],
+   links:[["Google 地圖",g("グルメ回転寿司 市場 美浜店 北谷"),1]] },
+ { name:"國際通屋台村", addr:"那霸・牧志",
+   kv:[["類型","小吃屋台街，串燒 / 生啤 / 海鮮"]], links:[["Google 地圖",g("国際通屋台村"),0]] },
+ { name:"Birthday 港川店", addr:"浦添・港川外人住宅",
+   kv:[["類型","甜點 / 鬆餅"]], links:[["Google 地圖",g("Birthday 港川"),0]] },
+ { name:"酒喜膳 一喜（棉花糖壽喜燒）", addr:"那霸",
+   kv:[["類型","棉花糖壽喜燒 / 居酒屋"]], links:[["Google 地圖",g("酒喜膳 一喜 那覇"),0]] },
+];
+
+const play = [
+ { name:"沖繩美麗海水族館", must:"maybe", addr:"本部町",
+   kv:[["營業","08:30–18:30（最後入館 17:30）"],["票價","成人 ¥2,180 / 高中 ¥1,440 / 中小學 ¥710"],["公休","12 月第一個週三、四"]],
+   links:[["Google 地圖",g("沖縄美ら海水族館"),0]] },
+ { name:"永旺夢樂城 沖繩來客夢", must:"must", addr:"北中城村",
+   kv:[["營業","10:00–22:00"]], links:[["Google 地圖",g("イオンモール沖縄ライカム"),0]] },
+ { name:"San-A PARCO CITY", must:"must", addr:"浦添西海岸",
+   kv:[["類型","大型購物中心"]], links:[["Google 地圖",g("サンエー浦添西海岸 PARCO CITY"),0]] },
+ { name:"沖繩兒童王國（動物園）", addr:"沖繩市",
+   kv:[["營業","平日 9:30–18:00（最終入場 17:00）"],["假日","9:30–21:00（最終入場 20:00）"],["公休","每週二"]],
+   links:[["Google 地圖",g("沖縄こどもの国"),0]] },
+ { name:"波上宮", must:"maybe", addr:"那霸",
+   kv:[["類型","海邊神社，可順遊波之上海灘"]], links:[["Google 地圖",g("波上宮"),0]] },
+ { name:"浦添大公園", addr:"浦添",
+   kv:[["營業","07:00–21:00・免預約"],["特色","超長滾輪溜滑梯"]], links:[["Google 地圖",g("浦添大公園"),0]] },
+ { name:"首里城", addr:"那霸", kv:[["類型","世界遺產（重建中）"]], links:[["Google 地圖",g("首里城"),0]] },
+ { name:"殘波岬燈塔", addr:"讀谷村", kv:[["類型","海岬絕景"]], links:[["Google 地圖",g("残波岬灯台"),0]] },
+ { name:"琉球村", addr:"恩納村", kv:[["類型","琉球文化主題園"]], links:[["Google 地圖",g("琉球村"),0]] },
+ { name:"平和通商店街", addr:"那霸・國際通", kv:[["類型","傳統拱廊商店街"]], links:[["Google 地圖",g("平和通り 那覇"),0]] },
+ { name:"安良波公園", addr:"北谷", kv:[["類型","海灘公園，適合小孩"]], links:[["Google 地圖",g("安良波公園 北谷"),0]] },
+ { name:"津久堂書店", addr:"那霸", kv:[["備註","IG 推薦景點"]], links:[["Instagram","https://www.instagram.com/reel/DSiv7meE6NB/",0]] },
+];
+
+const hotels = [
+ { name:"嘉新酒店 HOTEL COLLECTIVE", nights:"9/13（D1）", area:"那霸・國際通", q:"嘉新酒店 HOTEL COLLECTIVE 那覇" },
+ { name:"沖繩北谷麗嘉皇家度假酒店", nights:"9/14–9/15（D2–D3）", area:"北谷・美國村旁", q:"沖繩北谷麗嘉皇家度假酒店" },
+ { name:"Hotel Urbansea 2 松尾", nights:"9/16（D4）", area:"那霸・國際通 松尾", q:"ホテル アーバンシー2松尾" },
+];
+
+const flights = [
+ { dir:"去程", no:"JX870", date:"9/13 週日", from:["台北 桃園 T1","12:00"], to:["那霸","14:40"] },
+ { dir:"回程", no:"JX871", date:"9/17 週四", from:["那霸","15:50"], to:["台北 桃園","16:25"] },
+];
+
+const emergency = [
+ { label:"救急車・消防車", num:"119", tel:"119", note:"急病、重傷、火災" },
+ { label:"警察", num:"110", tel:"110", note:"事故、遺失、報案" },
+ { label:"外國人多語言醫療諮詢", num:"0570-050-235", tel:"0570050235", note:"免費・支援中文，協助找醫院" },
+ { label:"兒童醫療電話諮詢 #8000", num:"098-888-5230", tel:"0988885230", note:"平日 19:00–隔日 8:00、假日 24h（護理師建議）" },
+];
+
+const hospitalAreas = [
+ { area:"那霸（D1・D4・D5）", list:[
+   { name:"沖縄赤十字病院", note:"綜合急救・那霸市与儀", q:"沖縄赤十字病院" },
+   { name:"那覇市立病院", note:"小兒急救輪番（週三/五/日夜間）", q:"那覇市立病院" },
+   { name:"那覇市醫師會 急患診療所", note:"夜間小兒・內科", q:"那覇市医師会 急患診療所" },
+ ]},
+ { area:"北谷・中部（D2・D3 住宿區）", list:[
+   { name:"ハートライフ病院", note:"急救・中城村", q:"ハートライフ病院 沖縄" },
+   { name:"沖縄県立中部病院", note:"重症三次急救・自北谷約 36 分", q:"沖縄県立中部病院" },
+   { name:"中頭病院", note:"綜合・沖繩市", q:"中頭病院 沖縄市" },
+ ]},
+ { area:"北部・名護（D3 北上時）", list:[
+   { name:"沖縄県立北部病院", note:"名護市・北部急救", q:"沖縄県立北部病院 名護" },
+   { name:"北部地区医師会病院", note:"名護市", q:"北部地区医師会病院" },
+ ]},
+];
+
+const checkGroups = [
+ { g:"證件・重要", items:["護照","駕照","日文譯本","婦產科開立的懷孕證明","保險","網路（WiFi/SIM）","萬用插座"] },
+ { g:"寶寶（粿）用品", items:["尿布","尿布墊","濕紙巾","乾濕兩用巾","屁屁膏","拋棄式奶瓶","奶粉","奶粉分裝袋","常溫寶寶粥","寶寶外出碗具","米餅","妹妹益生菌、魚油＋D3","嬰兒洗髮精","嬰兒乳液和皮膚藥","磨甲刀","棉花棒和刷牙棉花棒","金金便便袋","寶寶娃娃和玩具","妹妹衣服 6–7 套","倩遮陽帽"] },
+ { g:"裝備", items:["推車","推車墊","嬰兒背巾","媽媽包","電熱水瓶","保溫杯","行動電源","電風扇","手錶和手機、風扇充電線","吹風機"] },
+ { g:"衣物・盥洗", items:["衣服","內褲","襪子","鞋子","拖鞋","浴巾","墨鏡","口罩（大人和粿）","大人牙刷和衛生用品","衛生紙"] },
+ { g:"其他", items:["雨傘","雨罩","防蚊乳","小瓶酒精","垃圾袋"] },
+];
+
+/* ============ RENDER ============ */
+const $ = s => document.querySelector(s);
+const el = (t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+
+/* views */
+document.querySelectorAll("#tabs .tab").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#tabs .tab").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    const v=b.dataset.v;
+    document.querySelectorAll("main .view").forEach(s=>s.hidden=s.dataset.v!==v);
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+});
+
+/* day tabs */
+let activeDay=0;
+const dayTabs=$("#dayTabs");
+days.forEach((d,i)=>{
+  const b=el("button","day-btn"+(i===0?" active":""),`<b>${d.label.replace("Day ","D")}</b><span>${d.date.split(" ")[0]}</span>`);
+  b.onclick=()=>{activeDay=i;renderItinerary();
+    dayTabs.querySelectorAll(".day-btn").forEach((x,j)=>x.classList.toggle("active",j===i));};
+  dayTabs.appendChild(b);
+});
+function buildDay(d){
+  const wrap=el("div");
+  const head=el("div","day-head",
+    `<h3>${d.label} · ${d.title}</h3><div class="meta"><span>📅 ${d.date}</span><span>🏨 住 <b>${d.stay}</b></span></div>`);
+  wrap.appendChild(head);
+  const tl=el("div","tl");
+  d.events.forEach(ev=>{
+    const [time,title,note,tag,map]=ev;
+    const c=el("div","ev "+(tag||""));
+    let html="";
+    if(time) html+=`<div class="ev-time">${time}</div>`;
+    html+=`<div class="ev-title">${title}</div>`;
+    if(note) html+=`<div class="ev-note">${note}</div>`;
+    let inner=`<div class="ev-card">${html}`;
+    if(map) inner+=`<a class="mapbtn" target="_blank" rel="noopener" href="${g(map)}">📍 地圖</a>`;
+    inner+=`</div>`;
+    c.innerHTML=inner;
+    tl.appendChild(c);
+  });
+  wrap.appendChild(tl);
+  return wrap;
+}
+let viewMode="single";
+function renderItinerary(){
+  const p=$("#dayPanel");p.innerHTML="";
+  dayTabs.hidden=viewMode!=="single";
+  if(viewMode==="single"){
+    p.appendChild(buildDay(days[activeDay]));
+  }else{
+    days.forEach((d,i)=>{
+      const blk=buildDay(d);
+      if(i)blk.style.marginTop="26px";
+      p.appendChild(blk);
+    });
+  }
+}
+document.querySelectorAll(".modebar .mode").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll(".modebar .mode").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    viewMode=b.dataset.m;renderItinerary();
+  };
+});
+renderItinerary();
+
+/* food */
+function renderCards(list,mount){
+  const m=$(mount);
+  list.forEach(x=>{
+    const c=el("div","card");
+    let badges="";
+    if(x.must==="must") badges+='<span class="badge b-must">必吃/必去</span>';
+    if(x.must==="maybe") badges+='<span class="badge b-maybe">隨意</span>';
+    if(x.book) badges+='<span class="badge b-book">需預約</span>';
+    let html=`<h3>${x.name} ${badges}</h3>`;
+    if(x.addr) html+=`<div class="addr">📍 ${x.addr}</div>`;
+    (x.kv||[]).forEach(([k,v])=>html+=`<div class="kv"><b>${k}</b>：${v}</div>`);
+    if(x.links&&x.links.length){
+      html+='<div class="links">';
+      x.links.forEach(([t,u,solid])=>html+=`<a class="${solid?'solid':''}" target="_blank" rel="noopener" href="${u}">${t}</a>`);
+      html+='</div>';
+    }
+    c.innerHTML=html;m.appendChild(c);
+  });
+}
+renderCards(food,"#foodList");
+renderCards(play,"#playList");
+
+/* flights */
+const fb=$("#flightBox");
+flights.forEach(f=>{
+  const c=el("div","card");
+  c.innerHTML=`<h3>${f.dir==="去程"?"🛫":"🛬"} ${f.dir} · <span class="no" style="font-size:.82rem">${f.no} · ${f.date}</span></h3>
+   <div class="flight" style="margin-top:8px">
+     <div class="leg"><div class="t">${f.from[1]}</div><div class="p">${f.from[0]}</div></div>
+     <div class="arrow">→</div>
+     <div class="leg" style="text-align:right"><div class="t">${f.to[1]}</div><div class="p">${f.to[0]}</div></div>
+   </div>`;
+  fb.appendChild(c);
+});
+
+/* hotels */
+const hl=$("#hotelList");
+hotels.forEach(h=>{
+  const c=el("div","card");
+  c.innerHTML=`<h3>🏨 ${h.name}</h3>
+    <div class="kv"><b>入住</b>：${h.nights}</div>
+    <div class="kv"><b>位置</b>：${h.area}</div>
+    <div class="links"><a class="solid" target="_blank" rel="noopener" href="${g(h.q)}">📍 Google 地圖</a></div>`;
+  hl.appendChild(c);
+});
+
+/* checklist + localStorage */
+const CKEY="okinawa2026-checks";
+let saved=JSON.parse(localStorage.getItem(CKEY)||"{}");
+const cl=$("#checkList");
+let allItems=[];
+checkGroups.forEach((grp,gi)=>{
+  grp.items.forEach(it=>allItems.push(it));
+  const d=el("details","chk-grp");if(gi<2)d.open=true;
+  const s=el("summary","",`<span>${grp.g}</span><span class="cnt" data-g="${gi}"></span>`);
+  d.appendChild(s);
+  const box=el("div","chk-list");
+  grp.items.forEach(it=>{
+    const id="c_"+btoa(unescape(encodeURIComponent(it))).replace(/=/g,"");
+    const lab=el("label","chk"+(saved[it]?" done":""));
+    lab.innerHTML=`<input type="checkbox" ${saved[it]?"checked":""}><span>${it}</span>`;
+    lab.querySelector("input").onchange=e=>{
+      saved[it]=e.target.checked;localStorage.setItem(CKEY,JSON.stringify(saved));
+      lab.classList.toggle("done",e.target.checked);updateProgress();
+    };
+    box.appendChild(lab);
+  });
+  d.appendChild(box);cl.appendChild(d);
+});
+function updateProgress(){
+  const done=allItems.filter(i=>saved[i]).length,all=allItems.length;
+  $("#pDone").textContent=done;$("#pAll").textContent=all;
+  $("#pBar").style.width=(all?done/all*100:0)+"%";
+  checkGroups.forEach((grp,gi)=>{
+    const d=grp.items.filter(i=>saved[i]).length;
+    document.querySelector(`.cnt[data-g="${gi}"]`).textContent=`${d}/${grp.items.length}`;
+  });
+}
+updateProgress();
+$("#resetChk").onclick=()=>{
+  if(!confirm("確定清空全部勾選？"))return;
+  saved={};localStorage.setItem(CKEY,"{}");
+  cl.querySelectorAll("input").forEach(i=>i.checked=false);
+  cl.querySelectorAll(".chk").forEach(l=>l.classList.remove("done"));
+  updateProgress();
+};
+
+/* emergency numbers */
+const emg=$("#emgList");
+emergency.forEach(e=>{
+  const c=el("div","card");
+  c.innerHTML=`<h3>📞 ${e.label}</h3>
+    <div class="kv" style="font-size:1.5rem;font-weight:800;color:var(--coral);margin:4px 0">
+      <a href="tel:${e.tel}" style="color:var(--coral)">${e.num}</a></div>
+    ${e.note?`<div class="addr">${e.note}</div>`:""}`;
+  emg.appendChild(c);
+});
+
+/* hospitals (collapsible by area) */
+const hp=$("#hospList");
+hospitalAreas.forEach((a,i)=>{
+  const d=el("details","chk-grp");if(i===0)d.open=true;
+  d.appendChild(el("summary","",`<span>🏥 ${a.area}</span><span class="cnt">${a.list.length} 間</span>`));
+  const box=el("div","chk-list");
+  a.list.forEach(h=>{
+    const row=el("div","chk");row.style.cursor="default";
+    row.innerHTML=`<div style="flex:1">
+        <div style="font-weight:700">${h.name}</div>
+        <div class="addr" style="margin:2px 0 0">${h.note}</div>
+      </div>
+      <a class="mapbtn" style="margin:0" target="_blank" rel="noopener" href="${g(h.q)}">📍</a>`;
+    box.appendChild(row);
+  });
+  d.appendChild(box);hp.appendChild(d);
+});
+
+/* weather (Open-Meteo, live within ~16 days) */
+const WMO={0:["☀️","晴"],1:["🌤️","晴時多雲"],2:["⛅","多雲"],3:["☁️","陰"],
+  45:["🌫️","霧"],48:["🌫️","霧"],51:["🌦️","毛毛雨"],53:["🌦️","毛毛雨"],55:["🌦️","毛毛雨"],
+  61:["🌧️","小雨"],63:["🌧️","雨"],65:["🌧️","大雨"],80:["🌦️","陣雨"],81:["🌦️","陣雨"],82:["⛈️","強陣雨"],
+  95:["⛈️","雷雨"],96:["⛈️","雷雨"],99:["⛈️","強雷雨"]};
+const TRIP_DATES=["2026-09-13","2026-09-14","2026-09-15","2026-09-16","2026-09-17"];
+function loadWeather(){
+  const note=$("#wxNote"),list=$("#wxList");
+  const url="https://api.open-meteo.com/v1/forecast?latitude=26.2124&longitude=127.6809"
+    +"&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+    +"&timezone=Asia%2FTokyo&forecast_days=16";
+  fetch(url).then(r=>r.json()).then(d=>{
+    const dl=d.daily;if(!dl||!dl.time){throw 0;}
+    const hasTrip=TRIP_DATES.some(t=>dl.time.includes(t));
+    note.textContent=hasTrip?"✅ 已含你們的旅遊日期（黃框標示）":
+      "ℹ️ 旅遊日期尚在 16 天預報範圍外，先看未來天氣趨勢；接近出發時會自動抓到當天預報。";
+    list.innerHTML="";
+    dl.time.forEach((t,i)=>{
+      const [ic,txt]=WMO[dl.weathercode[i]]||["🌡️",""];
+      const md=t.slice(5).replace("-","/");
+      const trip=TRIP_DATES.includes(t);
+      const c=el("div","card");
+      c.style.cssText="min-width:112px;flex:0 0 auto;text-align:center;padding:12px 10px;margin:0"
+        +(trip?";border:2px solid var(--sun)":"");
+      c.innerHTML=`<div style="font-size:.72rem;color:var(--sub);font-weight:700">${md}</div>
+        <div style="font-size:1.8rem;line-height:1.4">${ic}</div>
+        <div style="font-size:.72rem;color:var(--sub)">${txt}</div>
+        <div style="font-weight:800;margin-top:4px">${Math.round(dl.temperature_2m_max[i])}° <span style="color:var(--sub);font-weight:600">/ ${Math.round(dl.temperature_2m_min[i])}°</span></div>
+        <div style="font-size:.72rem;color:var(--sky);margin-top:2px">💧 ${dl.precipitation_probability_max[i]??"–"}%</div>`;
+      list.appendChild(c);
+    });
+  }).catch(()=>{note.textContent="⚠️ 目前無法連線取得即時預報（離線或網路問題），請參考上方 9 月氣候概況。";});
+}
+let wxLoaded=false;
+document.querySelector('#tabs .tab[data-v="weather"]').addEventListener("click",()=>{
+  if(!wxLoaded){wxLoaded=true;loadWeather();}
+});
+
+/* expand / collapse all */
+const expBtn=$("#expandBtn");
+expBtn.onclick=()=>{
+  const ds=document.querySelectorAll("details");
+  const anyClosed=[...ds].some(d=>!d.open);
+  ds.forEach(d=>d.open=anyClosed);
+  expBtn.textContent=anyClosed?"全部收合":"展開全部";
+};
+
+/* countdown */
+function tick(){
+  const diff=new Date(TRIP_START)-new Date();const box=$("#cd");
+  if(diff<=0){box.className="";box.innerHTML='<div class="cd-done">✈️ 旅程開始，玩得開心！</div>';return;}
+  const s=Math.floor(diff/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),ss=s%60;
+  box.innerHTML=[["天",d],["時",h],["分",m],["秒",ss]].map(([l,v])=>
+    `<div class="cd"><b>${v}</b><span>${l}</span></div>`).join("");
+}
+tick();setInterval(tick,1000);
+
+/* theme toggle */
+const tb=$("#themeBtn");
+const savedTheme=localStorage.getItem("okinawa-theme");
+if(savedTheme)document.documentElement.dataset.theme=savedTheme;
+function isDark(){const t=document.documentElement.dataset.theme;
+  return t?t==="dark":matchMedia("(prefers-color-scheme:dark)").matches;}
+function syncIcon(){tb.textContent=isDark()?"☀️":"🌙";}
+syncIcon();
+tb.onclick=()=>{const next=isDark()?"light":"dark";
+  document.documentElement.dataset.theme=next;localStorage.setItem("okinawa-theme",next);syncIcon();
+  document.querySelector('meta[name=theme-color]').content=next==="dark"?"#12191a":"#0e7c86";};
+
+/* PWA */
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>
