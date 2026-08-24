@@ -11,23 +11,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230e7c86'/%3E%3Ctext y='72' x='50' font-size='60' text-anchor='middle'%3E%F0%9F%8F%96%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <style>
 :root{
-  --ink:#1c2b2b; --sub:#5a6d6d; --paper:#fbf8f1; --card:#ffffff;
-  --line:#e3ddd0; --sea:#0e7c86; --sea-d:#0a5d64; --coral:#e26d5a;
+  --ink:#1f2933; --sub:#667085; --paper:#f4f6f8; --card:#ffffff;
+  --line:#e5e8ec; --sea:#0e7c86; --sea-d:#0a5d64; --coral:#e26d5a;
   --sun:#f2b134; --leaf:#5c9a5c; --sky:#3d7ea6; --grape:#8a6bb0;
-  --shadow:0 2px 10px rgba(28,43,43,.08); --shadow-l:0 6px 22px rgba(28,43,43,.12);
+  --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+  --shadow-l:0 6px 20px rgba(16,24,40,.10);
   --r:16px;
 }
-@media (prefers-color-scheme:dark){
-  :root{ --ink:#eef2f0; --sub:#9db0ad; --paper:#12191a; --card:#1a2426;
-    --line:#2b393b; --sea:#3fb6c1; --sea-d:#2a9aa5; --coral:#f0836f;
-    --shadow:0 2px 10px rgba(0,0,0,.35); --shadow-l:0 8px 26px rgba(0,0,0,.45);}
-}
-:root[data-theme="dark"]{ --ink:#eef2f0; --sub:#9db0ad; --paper:#12191a; --card:#1a2426;
-  --line:#2b393b; --sea:#3fb6c1; --sea-d:#2a9aa5; --coral:#f0836f;
-  --shadow:0 2px 10px rgba(0,0,0,.35); --shadow-l:0 8px 26px rgba(0,0,0,.45);}
-:root[data-theme="light"]{ --ink:#1c2b2b; --sub:#5a6d6d; --paper:#fbf8f1; --card:#ffffff;
-  --line:#e3ddd0; --sea:#0e7c86; --sea-d:#0a5d64; --coral:#e26d5a;
-  --shadow:0 2px 10px rgba(28,43,43,.08); --shadow-l:0 6px 22px rgba(28,43,43,.12);}
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -99,7 +89,6 @@ h2.sec::before{content:"";width:5px;height:20px;border-radius:3px;background:var
   border-radius:8px;padding:3px 10px;display:inline-flex;gap:6px;align-items:center}
 .rbranch{margin:5px 0 10px;font-size:.79rem;line-height:1.5;background:var(--c-play,#dcefe0);
   color:#2f6b39;border-radius:10px;padding:8px 11px}
-@media (prefers-color-scheme:dark){.rbranch{filter:brightness(.92)}}
 
 /* ---------- Day sub-tabs ---------- */
 .days{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
@@ -136,7 +125,6 @@ h2.sec::before{content:"";width:5px;height:20px;border-radius:3px;background:var
 .c-food{background:#fbe0da;color:#a03d2b}
 .c-stay{background:#e9e0f4;color:#5f4585}
 .c-play{background:#dcefe0;color:#2f6b39}
-@media (prefers-color-scheme:dark){.c-flight,.c-food,.c-stay,.c-play{filter:brightness(.9)}}
 .mapbtn{display:inline-flex;align-items:center;gap:4px;margin-top:7px;font-size:.76rem;font-weight:700;
   background:var(--sea);color:#fff;padding:4px 10px;border-radius:8px}
 
@@ -185,6 +173,28 @@ h2.sec::before{content:"";width:5px;height:20px;border-radius:3px;background:var
 .reset{margin-top:10px;background:none;border:1px solid var(--line);color:var(--sub);
   padding:8px 14px;border-radius:9px;font-size:.8rem;cursor:pointer}
 
+/* ---------- Talk / phrases ---------- */
+.applink{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.applink a{flex:1;min-width:150px;background:var(--sea);color:#fff;border-radius:12px;
+  padding:12px 14px;font-weight:700;box-shadow:var(--shadow);display:block}
+.applink a small{display:block;font-weight:500;opacity:.9;font-size:.72rem;margin-top:2px}
+.applink a.alt{background:var(--card);color:var(--sea);border:1px solid var(--sea)}
+.applink a.alt small{color:var(--sub);opacity:1}
+.phrase{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:11px 13px;box-shadow:var(--shadow);margin-bottom:9px;display:flex;align-items:center;gap:10px}
+.phrase .txt{flex:1;min-width:0}
+.phrase .zh{font-weight:700;font-size:.92rem}
+.phrase .ja{color:var(--sea-d);font-size:.92rem;margin-top:1px}
+.phrase .rom{color:var(--sub);font-size:.74rem;margin-top:1px}
+.speak{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--sea);color:#fff;font-size:1.15rem;box-shadow:var(--shadow)}
+.speak:active{transform:scale(.92)}
+.ttsbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:var(--shadow);margin-bottom:14px}
+.ttsbox textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;
+  font-size:.95rem;font-family:inherit;resize:vertical;min-height:60px;color:var(--ink);background:var(--paper)}
+.ttsbox button{margin-top:9px;background:var(--sea);color:#fff;border:0;border-radius:9px;
+  padding:9px 16px;font-weight:700;font-size:.9rem;cursor:pointer}
+
 .note{background:var(--card);border:1px dashed var(--sea);border-radius:12px;padding:12px 14px;font-size:.85rem;color:var(--sub);margin-bottom:14px}
 .note b{color:var(--coral)}
 footer{text-align:center;color:var(--sub);font-size:.72rem;padding:24px 0 10px}
@@ -194,10 +204,7 @@ footer{text-align:center;color:var(--sub);font-size:.72rem;padding:24px 0 10px}
 <header class="top">
   <div class="row">
     <div class="brand">🏖️ 沖繩親子旅行 <small>2026 / 09 / 13 – 09 / 17 · 星宇航空 · 自駕</small></div>
-    <div style="display:flex;gap:8px">
-      <button class="theme-btn" id="expandBtn" title="展開/收合全部" style="width:auto;padding:0 12px;font-size:.8rem;font-weight:700">展開全部</button>
-      <button class="theme-btn" id="themeBtn" title="切換深色">🌙</button>
-    </div>
+    <button class="theme-btn" id="expandBtn" title="展開/收合全部" style="width:auto;padding:0 14px;font-size:.8rem;font-weight:700">展開全部</button>
   </div>
   <div class="countdown" id="cd"></div>
 </header>
@@ -209,6 +216,7 @@ footer{text-align:center;color:var(--sub);font-size:.72rem;padding:24px 0 10px}
   <button class="tab" data-v="stay">🏨 住宿・航班</button>
   <button class="tab" data-v="weather">🌤️ 天氣</button>
   <button class="tab" data-v="med">🏥 醫療</button>
+  <button class="tab" data-v="talk">🗣️ 會話</button>
   <button class="tab" data-v="check">✅ 待辦</button>
 </nav>
 
@@ -295,6 +303,26 @@ footer{text-align:center;color:var(--sub);font-size:.72rem;padding:24px 0 10px}
     <div class="note">🛂 <b>就醫小提醒</b>：日本就醫需先自費、保留<b>診斷書與收據</b>回台向健保／旅平險申請核退；隨身帶<b>母子手冊、懷孕週數、寶寶保險資料</b>。多語言醫療諮詢 <b>0570-050-235</b> 可協助找看得懂中文的院所。</div>
     <h2 class="sec">各區就近醫院</h2>
     <div id="hospList"></div>
+  </section>
+
+  <!-- TALK -->
+  <section class="view" data-v="talk" hidden>
+    <h2 class="sec">即時口譯 App（推薦）</h2>
+    <div class="applink">
+      <a target="_blank" rel="noopener" href="https://voicetra.nict.go.jp/">VoiceTra 🎙️<small>日本官方免費・中日語音互譯最準</small></a>
+      <a class="alt" target="_blank" rel="noopener" href="https://translate.google.com/?sl=zh-TW&tl=ja&op=translate">Google 翻譯 🌐<small>對話模式・相機翻菜單・可離線</small></a>
+    </div>
+    <div class="note">💡 出發前先在 App 內<b>下載日文離線包</b>，斷網也能用。相機模式可即時翻譯菜單、招牌、藥品說明。</div>
+
+    <h2 class="sec">常用句（點 🔊 用日語唸出來）</h2>
+    <div id="phraseList"></div>
+
+    <h2 class="sec">自由輸入（貼日文→唸出來）</h2>
+    <div class="ttsbox">
+      <textarea id="ttsInput" placeholder="把 Google 翻譯出的日文貼進來，按下面按鈕就會用日語唸出來給店員/醫護聽…"></textarea>
+      <button id="ttsBtn">🔊 用日語唸出來</button>
+      <div id="ttsWarn" class="rsub" style="margin-top:8px"></div>
+    </div>
   </section>
 
   <!-- CHECKLIST -->
@@ -441,6 +469,40 @@ const hospitalAreas = [
  { area:"北部・名護（D3 北上時）", list:[
    { name:"沖縄県立北部病院", note:"名護市・北部急救", q:"沖縄県立北部病院 名護" },
    { name:"北部地区医師会病院", note:"名護市", q:"北部地区医師会病院" },
+ ]},
+];
+
+const phrases = [
+ { grp:"基本", list:[
+   ["你好","こんにちは","ko-n-ni-chi-wa"],
+   ["謝謝","ありがとうございます","a-ri-ga-tō go-za-i-ma-su"],
+   ["不好意思／請問","すみません","su-mi-ma-se-n"],
+   ["聽不懂日文，可以說中文或英文嗎？","日本語が分かりません。中国語か英語は話せますか？","ni-hon-go ga wa-ka-ri-ma-se-n"],
+ ]},
+ { grp:"點餐・購物", list:[
+   ["有中文菜單嗎？","中国語のメニューはありますか？","chū-goku-go no menyū wa a-ri-ma-su ka"],
+   ["請給我這個","これをください","ko-re o ku-da-sa-i"],
+   ["多少錢？","いくらですか？","i-ku-ra de-su ka"],
+   ["可以刷卡嗎？","カードは使えますか？","kā-do wa tsu-ka-e-ma-su ka"],
+   ["不要辣","辛くしないでください","ka-ra-ku shi-na-i-de ku-da-sa-i"],
+   ["我要預約，兩位大人一位小孩","予約したいです。大人二人、子供一人です","yo-ya-ku shi-ta-i de-su"],
+ ]},
+ { grp:"親子・孕婦", list:[
+   ["有嬰兒座椅嗎？","ベビーチェアはありますか？","be-bī che-a wa a-ri-ma-su ka"],
+   ["有哺乳室／換尿布的地方嗎？","授乳室やおむつ替えの場所はありますか？","ju-nyū-shitsu wa a-ri-ma-su ka"],
+   ["我懷孕了","妊娠しています","ni-n-shin shi-te-i-ma-su"],
+   ["請問有電梯嗎？（推嬰兒車）","エレベーターはありますか？","e-re-bē-tā wa a-ri-ma-su ka"],
+ ]},
+ { grp:"交通・問路", list:[
+   ["廁所在哪裡？","トイレはどこですか？","to-i-re wa do-ko de-su ka"],
+   ["請問到這裡怎麼走？","ここへの行き方を教えてください","ko-ko e no i-ki-ka-ta"],
+   ["這附近有藥局嗎？","この近くに薬局はありますか？","ko-no chi-ka-ku ni yak-kyoku"],
+ ]},
+ { grp:"緊急・求助", list:[
+   ["請幫我叫救護車","救急車を呼んでください","kyū-kyū-sha o yo-n-de ku-da-sa-i"],
+   ["我身體不舒服／小孩發燒了","具合が悪いです／子供が熱があります","gu-a-i ga wa-ru-i de-su"],
+   ["最近的醫院在哪裡？","一番近い病院はどこですか？","i-chi-ban chi-ka-i byō-in"],
+   ["請幫幫我","助けてください","ta-su-ke-te ku-da-sa-i"],
  ]},
 ];
 
@@ -638,6 +700,34 @@ hospitalAreas.forEach((a,i)=>{
   d.appendChild(box);hp.appendChild(d);
 });
 
+/* phrases + Japanese text-to-speech */
+function speakJa(text,btn){
+  if(!("speechSynthesis" in window)){alert("此裝置/瀏覽器不支援語音朗讀，建議改用 VoiceTra 或 Google 翻譯 App。");return;}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="ja-JP";u.rate=0.9;
+  const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.toLowerCase().startsWith("ja"));
+  if(v)u.voice=v;
+  if(btn){const o=btn.textContent;btn.textContent="🔈";u.onend=u.onerror=()=>btn.textContent=o;}
+  speechSynthesis.speak(u);
+}
+const pl=$("#phraseList");
+phrases.forEach(sec=>{
+  const d=el("details","chk-grp");d.open=true;d.style.marginBottom="12px";
+  d.appendChild(el("summary","",`<span>${sec.grp}</span><span class="cnt">${sec.list.length}</span>`));
+  const box=el("div","",""); box.style.marginTop="9px";
+  sec.list.forEach(([zh,ja,rom])=>{
+    const row=el("div","phrase");
+    row.innerHTML=`<div class="txt"><div class="zh">${zh}</div><div class="ja">${ja}</div><div class="rom">${rom}</div></div>`;
+    const b=el("button","speak","🔊");b.title="用日語唸出來";
+    b.onclick=()=>speakJa(ja,b);
+    row.appendChild(b);box.appendChild(row);
+  });
+  d.appendChild(box);pl.appendChild(d);
+});
+$("#ttsBtn").onclick=()=>{const t=$("#ttsInput").value.trim();if(t)speakJa(t,$("#ttsBtn"));};
+if(!("speechSynthesis" in window))$("#ttsWarn").textContent="⚠️ 此瀏覽器不支援朗讀，請改用上方 App。";
+if("speechSynthesis" in window)speechSynthesis.getVoices();
+
 /* weather (Open-Meteo, live within ~16 days) */
 const WMO={0:["☀️","晴"],1:["🌤️","晴時多雲"],2:["⛅","多雲"],3:["☁️","陰"],
   45:["🌫️","霧"],48:["🌫️","霧"],51:["🌦️","毛毛雨"],53:["🌦️","毛毛雨"],55:["🌦️","毛毛雨"],
@@ -694,18 +784,6 @@ function tick(){
     `<div class="cd"><b>${v}</b><span>${l}</span></div>`).join("");
 }
 tick();setInterval(tick,1000);
-
-/* theme toggle */
-const tb=$("#themeBtn");
-const savedTheme=localStorage.getItem("okinawa-theme");
-if(savedTheme)document.documentElement.dataset.theme=savedTheme;
-function isDark(){const t=document.documentElement.dataset.theme;
-  return t?t==="dark":matchMedia("(prefers-color-scheme:dark)").matches;}
-function syncIcon(){tb.textContent=isDark()?"☀️":"🌙";}
-syncIcon();
-tb.onclick=()=>{const next=isDark()?"light":"dark";
-  document.documentElement.dataset.theme=next;localStorage.setItem("okinawa-theme",next);syncIcon();
-  document.querySelector('meta[name=theme-color]').content=next==="dark"?"#12191a":"#0e7c86";};
 
 /* PWA */
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
