@@ -1,5 +1,5 @@
 /* 更新 index.html 後，把 CACHE_VERSION +1（v1 → v2）已安裝的離線快取才會更新 */
-const CACHE_VERSION = "okinawa-v7";
+const CACHE_VERSION = "okinawa-v8";
 const ASSETS = [
   "./",
   "./index.html",
